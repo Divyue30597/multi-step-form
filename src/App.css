@@ -88,6 +88,7 @@ ul li div p:last-of-type {
 
 .form-headers p {
   margin-bottom: 36px;
+  color: #9d9da5;
 }
 
 .form-footer {
@@ -134,4 +135,47 @@ ul li div p:last-of-type {
 .single-input input[type="email"]:focus {
   outline: none;
   border: 1.5px solid #102498;
+}
+
+.cards {
+  display: flex;
+  margin-bottom: 36px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1.5px solid #dbdbdd;
+  margin-right: 24px;
+  width: calc(100% / 3);
+  height: 172px;
+  padding: 18px;
+  border-radius: 8px;
+}
+
+.card-body:hover {
+  cursor: pointer;
+  border: 1.5px solid #534d93;
+}
+
+.card-body-active {
+  border: 1.5px solid #534d93;
+}
+
+.card-body:last-child {
+  margin-right: 0;
+}
+
+.card-body p {
+  margin-bottom: 0;
+}
+
+.select-plan-toggle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  background-color: #f8f9fe;
+  padding: 12px 0;
 }
