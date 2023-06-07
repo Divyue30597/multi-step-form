@@ -61,9 +61,17 @@ export function Card({ isMonthly }: { isMonthly: boolean }) {
       {cardDetails.map((cardDetail: ICardDetail) => {
         {
           return isMonthly && cardDetail.plan === "monthly" ? (
-            <CardMonthlyStyle key={cardDetail.price} cardDetail={cardDetail} />
+            <CardStyle
+              key={cardDetail.price}
+              cardDetail={cardDetail}
+              isMonthly={isMonthly}
+            />
           ) : !isMonthly && cardDetail.plan === "yearly" ? (
-            <CardYearlyStyle key={cardDetail.price} cardDetail={cardDetail} />
+            <CardStyle
+              key={cardDetail.price}
+              cardDetail={cardDetail}
+              isMonthly={isMonthly}
+            />
           ) : null;
         }
       })}
@@ -71,7 +79,13 @@ export function Card({ isMonthly }: { isMonthly: boolean }) {
   );
 }
 
-function CardMonthlyStyle({ cardDetail }: { cardDetail: ICardDetail }) {
+function CardStyle({
+  cardDetail,
+  isMonthly,
+}: {
+  cardDetail: ICardDetail;
+  isMonthly: boolean;
+}) {
   return (
     <label htmlFor={cardDetail.type.toLowerCase()}>
       <input
@@ -84,29 +98,10 @@ function CardMonthlyStyle({ cardDetail }: { cardDetail: ICardDetail }) {
           <img src={cardDetail.cardIcon} alt={cardDetail.alt} />
         </picture>
         <div className="card-body-details">
-          <h3>{cardDetail.type}</h3>
-          <p>${cardDetail.price}/mo</p>
-        </div>
-      </div>
-    </label>
-  );
-}
-
-function CardYearlyStyle({ cardDetail }: { cardDetail: ICardDetail }) {
-  return (
-    <label htmlFor={cardDetail.type.toLowerCase()}>
-      <input
-        type="radio"
-        name="select-your-plan"
-        id={cardDetail.type.toLowerCase()}
-      />
-      <div className="card-body">
-        <picture>
-          <img src={cardDetail.cardIcon} alt={cardDetail.alt} />
-        </picture>
-        <div className="card-body-details">
-          <h3>{cardDetail.type}</h3>
-          <p>${cardDetail.price}/mo</p>
+          <p>{cardDetail.type}</p>
+          <p>
+            ${cardDetail.price}/{isMonthly ? "mo" : "yr"}
+          </p>
         </div>
       </div>
     </label>

@@ -50,14 +50,16 @@ export function CheckboxInput({ isMonthly }: { isMonthly: boolean }) {
       {checkboxInputData.map((singleCheckboxInputData: ICheckboxInputData) => {
         {
           return isMonthly && singleCheckboxInputData.plan === "monthly" ? (
-            <MonthlyCheckboxInput
+            <SingleCheckboxInput
               key={singleCheckboxInputData.service}
               singleCheckboxInputData={singleCheckboxInputData}
+              isMonthly={isMonthly}
             />
           ) : !isMonthly && singleCheckboxInputData.plan === "yearly" ? (
-            <YearlyCheckboxInput
+            <SingleCheckboxInput
               key={singleCheckboxInputData.service}
               singleCheckboxInputData={singleCheckboxInputData}
+              isMonthly={isMonthly}
             />
           ) : null;
         }
@@ -70,54 +72,33 @@ function createId(id: string) {
   return id.toLowerCase().split(" ").join("-");
 }
 
-function MonthlyCheckboxInput({
+function SingleCheckboxInput({
   singleCheckboxInputData,
+  isMonthly,
 }: {
   singleCheckboxInputData: ICheckboxInputData;
+  isMonthly: boolean;
 }) {
   return (
-    <label htmlFor={createId(singleCheckboxInputData.service)}>
-      <div className="checkbox-input">
-        <div className="input-and-label">
-          <input
-            type="checkbox"
-            id={createId(singleCheckboxInputData.service)}
-            name="pick-add-ons"
-            value="coding"
-          />
-          <div className="checkbox-input-body">
-            <p>{singleCheckboxInputData.service}</p>
-            <p>{singleCheckboxInputData.shortDescription}</p>
-          </div>
+    <label
+      className="checkbox-input"
+      htmlFor={createId(singleCheckboxInputData.service)}
+    >
+      <div className="input-and-label">
+        <input
+          type="checkbox"
+          id={createId(singleCheckboxInputData.service)}
+          name="pick-add-ons"
+          value={singleCheckboxInputData.service}
+        />
+        <div className="checkbox-input-body">
+          <p>{singleCheckboxInputData.service}</p>
+          <p>{singleCheckboxInputData.shortDescription}</p>
         </div>
-        <p>${singleCheckboxInputData.price}/yr</p>
       </div>
+      <p>
+        ${singleCheckboxInputData.price}/{isMonthly ? "mo" : "yr"}
+      </p>
     </label>
-  );
-}
-
-function YearlyCheckboxInput({
-  singleCheckboxInputData,
-}: {
-  singleCheckboxInputData: ICheckboxInputData;
-}) {
-  return (
-    <>
-      <label htmlFor={createId(singleCheckboxInputData.service)}>
-        <div className="checkbox-input">
-          <input
-            type="checkbox"
-            id={createId(singleCheckboxInputData.service)}
-            name="pick-add-ons"
-            value="coding"
-          />
-          <div className="checkbox-input-body">
-            <p>{singleCheckboxInputData.service}</p>
-            <p>{singleCheckboxInputData.shortDescription}</p>
-          </div>
-          <p>${singleCheckboxInputData.price}/yr</p>
-        </div>
-      </label>
-    </>
   );
 }

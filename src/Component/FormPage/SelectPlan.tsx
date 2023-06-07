@@ -1,4 +1,5 @@
 import { Card } from "../Card/Card";
+import { Toggle } from "../Toggle/Toggle";
 
 export function SelectPlan({
   isMonthly,
@@ -11,8 +12,9 @@ export function SelectPlan({
     <div className="select-plan">
       <Card isMonthly={isMonthly} />
       <div className="select-plan-toggle">
-        <span>Monthly</span>
-        <span>Yearly</span>
+        <p className={isMonthly ? "is-Monthly" : ""}>Monthly</p>
+        <Toggle isMonthly={isMonthly} setIsMonthly={setIsMonthly} />
+        <p className={!isMonthly ? "is-Monthly" : ""}>Yearly</p>
       </div>
     </div>
   );
