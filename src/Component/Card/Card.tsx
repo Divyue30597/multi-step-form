@@ -73,28 +73,42 @@ export function Card({ isMonthly }: { isMonthly: boolean }) {
 
 function CardMonthlyStyle({ cardDetail }: { cardDetail: ICardDetail }) {
   return (
-    <div className="card-body">
-      <picture>
-        <img src={cardDetail.cardIcon} alt={cardDetail.alt} />
-      </picture>
-      <div className="card-body-details">
-        <h3>{cardDetail.type}</h3>
-        <p>${cardDetail.price}/mo</p>
+    <label htmlFor={cardDetail.type.toLowerCase()}>
+      <input
+        type="radio"
+        name="select-your-plan"
+        id={cardDetail.type.toLowerCase()}
+      />
+      <div className="card-body">
+        <picture>
+          <img src={cardDetail.cardIcon} alt={cardDetail.alt} />
+        </picture>
+        <div className="card-body-details">
+          <h3>{cardDetail.type}</h3>
+          <p>${cardDetail.price}/mo</p>
+        </div>
       </div>
-    </div>
+    </label>
   );
 }
 
 function CardYearlyStyle({ cardDetail }: { cardDetail: ICardDetail }) {
   return (
-    <div className="card-body">
-      <picture>
-        <img src={cardDetail.cardIcon} alt={cardDetail.alt} />
-      </picture>
-      <div className="card-body-details">
-        <h3>{cardDetail.type}</h3>
-        <p>${cardDetail.price}/yr</p>
+    <label htmlFor={cardDetail.type.toLowerCase()}>
+      <input
+        type="radio"
+        name="select-your-plan"
+        id={cardDetail.type.toLowerCase()}
+      />
+      <div className="card-body">
+        <picture>
+          <img src={cardDetail.cardIcon} alt={cardDetail.alt} />
+        </picture>
+        <div className="card-body-details">
+          <h3>{cardDetail.type}</h3>
+          <p>${cardDetail.price}/mo</p>
+        </div>
       </div>
-    </div>
+    </label>
   );
 }

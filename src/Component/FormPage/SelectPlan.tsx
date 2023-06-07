@@ -1,9 +1,12 @@
-import { useState } from "react";
 import { Card } from "../Card/Card";
 
-export function SelectPlan() {
-  const [isMonthly, setIsMonthly] = useState<boolean>(true);
-
+export function SelectPlan({
+  isMonthly,
+  setIsMonthly,
+}: {
+  isMonthly: boolean;
+  setIsMonthly: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <div className="select-plan">
       <Card isMonthly={isMonthly} />

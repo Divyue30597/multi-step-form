@@ -2,6 +2,7 @@ import { PersonalInfo } from "../FormPage/PersonalInfo";
 import { FinalPage } from "../FormPage/FinalPage";
 import { SelectAddOns } from "../FormPage/SelectAddOns";
 import { SelectPlan } from "../FormPage/SelectPlan";
+import { useState } from "react";
 
 interface IFormHeading {
   heading: string;
@@ -29,13 +30,15 @@ const formHeading: IFormHeading[] = [
 ];
 
 function formComponent(activeIndex: number) {
+  const [isMonthly, setIsMonthly] = useState<boolean>(true);
+
   switch (activeIndex) {
     case 0:
       return <PersonalInfo />;
     case 1:
-      return <SelectPlan />;
+      return <SelectPlan isMonthly={isMonthly} setIsMonthly={setIsMonthly} />;
     case 2:
-      return <SelectAddOns />;
+      return <SelectAddOns isMonthly={isMonthly} />;
     case 3:
       return <FinalPage />;
   }

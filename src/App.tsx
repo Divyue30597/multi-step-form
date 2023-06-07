@@ -4,7 +4,7 @@ import { Layout } from "./Component/Layout/Layout";
 import bgImage from "./assets/bg-sidebar-desktop.svg";
 import { FormLayout } from "./Component/FormLayout/FormLayout";
 import { Button } from "./Component/Button/Button";
-import imageDesign1 from "../design/active-states-step-2.jpg";
+import imageDesign1 from "../design/active-states-step-3.jpg";
 
 const listItems = [
   { step: "STEP 1", stepName: "YOUR INFO" },
@@ -70,7 +70,11 @@ function App() {
               {activeIndex > 0 ? (
                 <Button handleClick={decrementIndex}>Go Back</Button>
               ) : null}
-              <Button handleClick={incrementIndex}>Next Step</Button>
+              {activeIndex > 2 ? (
+                <Button handleClick={incrementIndex}>Confirm</Button>
+              ) : (
+                <Button handleClick={incrementIndex}>Next Step</Button>
+              )}
             </div>
           </div>
         </Layout>

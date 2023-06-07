@@ -21,6 +21,10 @@
   display: flex;
 }
 
+h1 {
+  color: var(--primary-color) !important;
+}
+
 .bg-img {
   height: fit-content;
 }
@@ -51,7 +55,7 @@ ul li:last-child {
 
 .span-list {
   display: inline-block;
-  border: 2px solid #fff;
+  border: 1.5px solid #fff;
   padding: 5px 12px;
   border-radius: 50%;
   color: #fff;
@@ -59,8 +63,8 @@ ul li:last-child {
 }
 
 .is-active {
-  background-color: #fff;
-  color: #000;
+  background-color: #c2e5fb;
+  color: var(--primary-color);
 }
 
 ul li div p:first-of-type {
@@ -107,10 +111,16 @@ ul li div p:last-of-type {
   border-radius: 8px;
   border: none;
   margin-bottom: 24px;
+  cursor: pointer;
 }
 
 .button:last-of-type {
   background-color: #03295a;
+  color: #fff;
+}
+
+.button:last-of-type:hover {
+  background-color: #174a8b;
   color: #fff;
 }
 
@@ -137,9 +147,21 @@ ul li div p:last-of-type {
   border: 1.5px solid #102498;
 }
 
+/* Card */
+
 .cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 24px;
   margin-bottom: 36px;
+}
+
+.cards input[type="radio"] {
+  display: none;
+}
+
+.cards input[type="radio"]:checked + .card-body {
+  border: 1.5px solid #534d93;
 }
 
 .card-body {
@@ -148,7 +170,6 @@ ul li div p:last-of-type {
   justify-content: space-between;
   border: 1.5px solid #dbdbdd;
   margin-right: 24px;
-  width: calc(100% / 3);
   height: 172px;
   padding: 18px;
   border-radius: 8px;
@@ -178,4 +199,39 @@ ul li div p:last-of-type {
   width: 100%;
   background-color: #f8f9fe;
   padding: 12px 0;
+}
+
+/* CheckboxInput */
+
+.checkbox-input {
+  display: flex;
+  justify-content: space-between;
+  border: 1.5px solid #dbdbdd;
+  padding: 12px 24px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.checkbox-input:hover {
+  border: 1.5px solid var(--primary-color);
+}
+
+.checkbox-input p:first-of-type {
+  font-weight: 700;
+  color: #142747;
+}
+
+.checkbox-input p {
+  margin-bottom: 0;
+}
+
+.input-and-label {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-and-label input[type="checkbox"] {
+  margin-right: 24px;
 }

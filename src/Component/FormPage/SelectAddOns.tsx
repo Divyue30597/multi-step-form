@@ -1,7 +1,9 @@
-export function SelectAddOns() {
+import { CheckboxInput } from "../CheckboxInput/CheckboxInput";
+
+export function SelectAddOns({ isMonthly }: { isMonthly: boolean }) {
   return (
     <div>
-      <h1>Select Add ons</h1>
+      <CheckboxInput isMonthly={isMonthly} />
     </div>
   );
 }
