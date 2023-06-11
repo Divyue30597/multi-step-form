@@ -1,3 +1,7 @@
+import { FormikContextType, useFormikContext } from "formik";
+import { IAddOns, IFormSubmission } from "../../App";
+import { InputHTMLAttributes, useState } from "react";
+
 interface ICheckboxInputData {
   service: string;
   shortDescription: string;
@@ -79,6 +83,28 @@ function SingleCheckboxInput({
   singleCheckboxInputData: ICheckboxInputData;
   isMonthly: boolean;
 }) {
+  const context: FormikContextType<IFormSubmission> =
+    useFormikContext<IFormSubmission>();
+
+  const val: IAddOns = {
+    addOnsInfo: singleCheckboxInputData.service,
+    price: singleCheckboxInputData.price,
+  };
+
+  function handleChange(
+    event: React.ChangeEvent<HTMLInputElement>,
+    val: IAddOns
+  ) {
+    if (event.target.checked) {
+      context.values.addOns.push(val);
+    } else {
+      const index = context.values.addOns.indexOf(val);
+      if (index > -1) {
+        context.values.addOns.splice(index, 1);
+      }
+    }
+  }
+
   return (
     <label
       className="checkbox-input"
@@ -88,8 +114,9 @@ function SingleCheckboxInput({
         <input
           type="checkbox"
           id={createId(singleCheckboxInputData.service)}
-          name="pick-add-ons"
-          value={singleCheckboxInputData.service}
+          name={singleCheckboxInputData.service}
+          value={JSON.stringify(val)}
+          onChange={(event) => handleChange(event, val)}
         />
         <div className="checkbox-input-body">
           <p>{singleCheckboxInputData.service}</p>

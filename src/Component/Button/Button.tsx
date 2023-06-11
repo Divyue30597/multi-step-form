@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
 
-export function Button({
-  children,
-  handleClick,
-}: {
+interface IButton {
   children: ReactNode;
-  handleClick: () => void;
-}) {
+  handleClick?: () => void;
+  type: "button" | "submit";
+}
+
+export function Button({ children, handleClick, type }: IButton) {
   return (
-    <button className="button" onClick={handleClick}>
+    <button type={type} className="button" onClick={handleClick}>
       {children}
     </button>
   );

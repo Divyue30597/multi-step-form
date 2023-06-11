@@ -79,12 +79,15 @@ ul li div p:last-of-type {
 }
 
 .form-outer-body {
-  margin: 36px 84px 0px 84px;
+  /* margin: 36px 36px 0px 36px; */
+  padding: 36px 72px 0px 72px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
 }
+
+/* Form Headers */
 
 .form-headers h1 {
   margin-bottom: 8px;
@@ -124,6 +127,10 @@ ul li div p:last-of-type {
   color: #fff;
 }
 
+.button[type="submit"]:hover {
+  background-color: #938cfe;
+  transition: 400ms;
+}
 /* Input */
 
 .single-input {
@@ -147,6 +154,17 @@ ul li div p:last-of-type {
 .single-input input[type="email"]:focus {
   outline: none;
   border: 1.5px solid #102498;
+}
+
+.label-and-error-handling {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label-and-error-handling p {
+  margin-bottom: 0;
+  font-weight: 500;
+  color: var(--danger-color);
 }
 
 /* Card */
@@ -282,6 +300,10 @@ ul li div p:last-of-type {
   align-items: center;
 }
 
+.checkbox-input:last-child {
+  margin-bottom: 0;
+}
+
 .checkbox-input:hover {
   border: 1.5px solid var(--primary-color);
 }
@@ -302,4 +324,61 @@ ul li div p:last-of-type {
 
 .input-and-label input[type="checkbox"] {
   margin-right: 24px;
+}
+
+.final-page {
+  background-color: #f8f9fe;
+  padding: 24px;
+}
+
+.final-page-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.final-page-heading h3 {
+  color: var(--primary-color);
+}
+
+.final-page-heading p {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0;
+}
+
+hr {
+  margin: 18px 0;
+  border: none;
+  height: 2px;
+  background-color: #e7e8ed;
+}
+
+.final-page-body-item p {
+  margin-bottom: 12px;
+}
+
+.final-page-body-item p:last-of-type {
+  color: var(--primary-color);
+}
+
+.final-page-body-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.final-page-footer {
+  margin: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.final-page-footer p:last-of-type {
+  font-weight: 700;
+  font-size: 24px;
+  color: #463ad8;
 }

@@ -1,6 +1,8 @@
 import iconAdvance from "../../assets/icon-advanced.svg";
 import iconPro from "../../assets/icon-pro.svg";
 import iconArcade from "../../assets/icon-arcade.svg";
+import { FormikContextType, useFormikContext } from "formik";
+import { IFormSubmission } from "../../App";
 
 interface ICardDetail {
   cardIcon: string;
@@ -86,12 +88,19 @@ function CardStyle({
   cardDetail: ICardDetail;
   isMonthly: boolean;
 }) {
+  const context: FormikContextType<IFormSubmission> =
+    useFormikContext<IFormSubmission>();
+
   return (
     <label htmlFor={cardDetail.type.toLowerCase()}>
       <input
         type="radio"
         name="select-your-plan"
         id={cardDetail.type.toLowerCase()}
+        value={
+          ((context.values.plan.planInfo = cardDetail.type),
+          (context.values.plan.price = cardDetail.price))
+        }
       />
       <div className="card-body">
         <picture>
