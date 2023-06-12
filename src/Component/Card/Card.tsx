@@ -136,6 +136,9 @@ function CardStyle({
           <p>
             ${cardDetail.price}/{isMonthly ? "mo" : "yr"}
           </p>
+          {cardDetail.plan === "yearly" ? (
+            <p style={{ color: "#253c5b" }}>2 Months free</p>
+          ) : null}
         </div>
       </div>
     </label>

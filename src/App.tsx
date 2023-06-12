@@ -2,11 +2,11 @@ import { useState } from "react";
 import "./App.css";
 import { Layout } from "./Component/Layout/Layout";
 import bgImage from "./assets/bg-sidebar-desktop.svg";
+import bgImageMob from "./assets/bg-sidebar-mobile.svg";
 import { FormLayout } from "./Component/FormLayout/FormLayout";
 import { Button } from "./Component/Button/Button";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import image from "../design/active-states-step-4.jpg";
 
 export interface IFormSubmission {
   name: string;
@@ -40,9 +40,9 @@ const listItems: IListItems[] = [
 ];
 
 const initialState: IFormSubmission = {
-  name: "Divyue Sharma",
-  email: "divyue.sharma@gmail.com",
-  phoneNumber: "9344444059",
+  name: "",
+  email: "",
+  phoneNumber: "",
   planType: "",
   plan: {
     planInfo: "",
@@ -59,7 +59,7 @@ const validationSchema = Yup.object({
     .email("Invalid email address")
     .required("This field is required"),
   phoneNumber: Yup.number()
-    .min(600000000, "Minimum Limit reached.")
+    .min(6000000000, "Minimum Limit reached.")
     .max(9999999999, "Maximum limit reached.")
     .required("This field is required"),
   planType: Yup.string().required("This field is required"),
@@ -93,22 +93,24 @@ function Main() {
 
   return (
     <main className="main">
-      {/* <img src={image} /> */}
       <Formik
         initialValues={initialState}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
+        onSubmit={(values: IFormSubmission) => {
           console.log(JSON.stringify(values, null, 2));
         }}
       >
         <Form>
           <Layout>
             <div className="img-and-list">
-              <img
-                className="bg-img"
-                src={bgImage}
-                alt="blue color background with some decor"
-              />
+              <picture>
+                <source media="(max-width: 425px)" srcSet={bgImageMob} />
+                <img
+                  className="bg-img"
+                  src={bgImage}
+                  alt="blue color background with some decor"
+                />
+              </picture>
               <ul className="items-list">
                 {listItems.map((item, index) => {
                   return (
