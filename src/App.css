@@ -15,9 +15,9 @@
   padding: 18px;
   border-radius: 12px;
   background-color: var(--white);
-  -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 10px 20px 0px #dee5ed;
+  -moz-box-shadow: 0px 10px 20px 0px #dee5ed;
+  box-shadow: 0px 10px 20px 0px #dee5ed;
   display: flex;
 }
 
@@ -326,6 +326,8 @@ ul li div p:last-of-type {
   margin-right: 24px;
 }
 
+/* Final Page Component */
+
 .final-page {
   background-color: #f8f9fe;
   padding: 24px;
@@ -359,8 +361,13 @@ hr {
   margin-bottom: 12px;
 }
 
+.final-page-body-item:last-of-type p {
+  margin-bottom: 0;
+}
+
 .final-page-body-item p:last-of-type {
   color: var(--primary-color);
+  /* margin-bottom: 0; */
 }
 
 .final-page-body-item {

@@ -17,7 +17,7 @@ export interface IFormSubmission {
   addOns: IAddOns[];
 }
 
-interface IPlan {
+export interface IPlan {
   planInfo: string;
   price: number;
 }
@@ -93,7 +93,7 @@ function Main() {
 
   return (
     <main className="main">
-      <img src={image} />
+      {/* <img src={image} /> */}
       <Formik
         initialValues={initialState}
         validationSchema={validationSchema}

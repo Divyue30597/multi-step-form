@@ -1,6 +1,5 @@
 import { FormikContextType, useFormikContext } from "formik";
 import { IAddOns, IFormSubmission } from "../../App";
-import { InputHTMLAttributes, useState } from "react";
 
 interface ICheckboxInputData {
   service: string;

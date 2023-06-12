@@ -2,7 +2,8 @@ import iconAdvance from "../../assets/icon-advanced.svg";
 import iconPro from "../../assets/icon-pro.svg";
 import iconArcade from "../../assets/icon-arcade.svg";
 import { FormikContextType, useFormikContext } from "formik";
-import { IFormSubmission } from "../../App";
+import { IFormSubmission, IPlan } from "../../App";
+import { useState } from "react";
 
 interface ICardDetail {
   cardIcon: string;
@@ -10,6 +11,7 @@ interface ICardDetail {
   price: number;
   plan: string;
   alt: string;
+  checked: boolean;
 }
 
 const cardDetails: ICardDetail[] = [
@@ -19,6 +21,7 @@ const cardDetails: ICardDetail[] = [
     price: 12,
     plan: "monthly",
     alt: "red background with game pad.",
+    checked: false,
   },
   {
     cardIcon: iconAdvance,
@@ -26,6 +29,7 @@ const cardDetails: ICardDetail[] = [
     price: 120,
     plan: "yearly",
     alt: "red background with game pad.",
+    checked: false,
   },
   {
     cardIcon: iconPro,
@@ -33,6 +37,7 @@ const cardDetails: ICardDetail[] = [
     price: 15,
     plan: "monthly",
     alt: "blue background with controller.",
+    checked: false,
   },
   {
     cardIcon: iconPro,
@@ -40,6 +45,7 @@ const cardDetails: ICardDetail[] = [
     price: 150,
     plan: "yearly",
     alt: "blue background with controller.",
+    checked: false,
   },
   {
     cardIcon: iconArcade,
@@ -47,6 +53,7 @@ const cardDetails: ICardDetail[] = [
     price: 9,
     plan: "monthly",
     alt: "Orange background with atari type console",
+    checked: false,
   },
   {
     cardIcon: iconArcade,
@@ -54,6 +61,7 @@ const cardDetails: ICardDetail[] = [
     price: 90,
     plan: "yearly",
     alt: "Orange background with atari type console",
+    checked: false,
   },
 ];
 
@@ -91,16 +99,33 @@ function CardStyle({
   const context: FormikContextType<IFormSubmission> =
     useFormikContext<IFormSubmission>();
 
+  const val: IPlan = {
+    planInfo: cardDetail.type,
+    price: cardDetail.price,
+  };
+
+  const [checkedState, setCheckedState] = useState(cardDetail.checked);
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    if (event.target.checked) {
+      context.values.plan.planInfo = cardDetail.type;
+      context.values.plan.price = cardDetail.price;
+      setCheckedState(!checkedState);
+    } else {
+      context.values.plan.planInfo = "";
+      context.values.plan.price = 0;
+    }
+  }
+
   return (
     <label htmlFor={cardDetail.type.toLowerCase()}>
       <input
         type="radio"
-        name="select-your-plan"
+        name={cardDetail.plan.toLowerCase()}
         id={cardDetail.type.toLowerCase()}
-        value={
-          ((context.values.plan.planInfo = cardDetail.type),
-          (context.values.plan.price = cardDetail.price))
-        }
+        value={JSON.stringify(val)}
+        onChange={handleChange}
+        checked={checkedState}
       />
       <div className="card-body">
         <picture>
